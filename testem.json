@@ -1,0 +1,8 @@
+{
+    "framework": "qunit",
+    "src_files": [
+        "immediate.js",
+        "wrapas.js",
+        "tests.wrapas.js"
+    ]
+}
