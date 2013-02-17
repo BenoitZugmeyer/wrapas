@@ -1,0 +1,31 @@
+{
+  "name": "wrapas",
+  "version": "0.1.0",
+  "description": "Continuation passing style helper utility.",
+  "author": "Benoît Zugmeyer <benoit@zugmeyer.com>",
+  "keywords": ["cps", "flow", "asynchronous", "continuation", "control-flow"],
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BenoitZugmeyer/wrapas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BenoitZugmeyer/wrapas/issues"
+  },
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/BenoitZugmeyer/wrapas/master/LICENSE"
+  }],
+
+  "scripts": {
+    "test": "testem",
+    "install": "sh build.sh"
+  },
+  "main": "./dist/node/wrapas",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "testem": "*"
+  },
+  "engines": {"node": "*"}
+}
