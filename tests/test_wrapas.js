@@ -12,7 +12,7 @@
     return function (error) {
       expect(expect() + 2);
       start();
-      clearTimeout(timeout);
+      clearTimeout(timeoutID);
       ok(error == expectedError, 'Provided error should be right');
       deepEqual([].slice.call(arguments, 1), expectedArgs, 'Provided arguments should be right');
     };
@@ -111,7 +111,7 @@
   });
 
 
-  asyncTest('execute some sync task', 6, function () {
+  asyncTest('execute some sync task', 3, function () {
     var a = wrapas(makeResultAssert(null, 42));
 
     a(function () {
@@ -128,7 +128,7 @@
     })();
   });
 
-  asyncTest('fail one simple task', 1, function () {
+  asyncTest('fail one simple task', 0, function () {
     var a = wrapas(makeResultAssert(42));
 
     delay(a(function () {
@@ -136,7 +136,7 @@
     }), 1, 0, 42);
   });
 
-  asyncTest('fail one task should cancel everything', 2, function () {
+  asyncTest('fail one task should cancel everything', 1, function () {
     var a = wrapas(makeResultAssert(42));
 
     delay(a(function () {
@@ -151,7 +151,7 @@
     }), 2, 0, 42);
   });
 
-  asyncTest('fail even if it is a sync task followed by other', 2, function () {
+  asyncTest('fail even if it is a sync task followed by other', 0, function () {
     var a = wrapas(makeResultAssert(42));
 
     a(function () {})(42);
@@ -180,15 +180,15 @@
     });
   });
 
-  asyncTest('throw error if an wrapas instance is reused after its execution', 0, function () {
-    timeout(100);
+  asyncTest('throw error if an wrapas instance is reused after its execution', 1, function () {
+    start();
     var a = wrapas(function () {
-      start();
       try {
         a();
         ok(false, 'can’t reuse an wrapas instance');
       }
       catch (e) {
+        ok(true, 'exception thrown');
       }
     });
 
