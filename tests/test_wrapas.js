@@ -195,4 +195,11 @@
     a()();
   });
 
+  asyncTest('the callback is called even if the wrapas instance is not used', 1, function () {
+    start();
+    wrapas(function () {
+      ok(true);
+    });
+  });
+
 }());
